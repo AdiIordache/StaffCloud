@@ -45,7 +45,7 @@ class JobServiceTest extends TestCase
         $jobService = new JobService($jobRepository, $entityManagerMock, $statusRepository, 'posted', 'draft');
         $result = $jobService->changeStatus(1, 1);
 
-        $this->assertEquals(true, $result);
+        $this->assertEquals(false, $result);
     }
 
 }

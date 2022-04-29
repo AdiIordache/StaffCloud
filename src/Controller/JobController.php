@@ -40,7 +40,7 @@ class JobController extends AbstractController
         $job = $requestContent['job'];
 
         $oldStatus = $requestContent['oldStatus'];
-        $success = $this->jobService->changeStatus(1, 1);
+        $success = $this->jobService->changeStatus($job, $oldStatus);
         $responseStatus = 500;
 
         if ($success === true) {
