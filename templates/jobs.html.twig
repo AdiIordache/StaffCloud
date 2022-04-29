@@ -1,0 +1,56 @@
+<link rel="stylesheet" href='{{ asset('styles/jobs.css') }}'>
+<script src={{ asset('jobs.js') }}></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class='app'>
+    <main class='project'>
+        <div class='project-info'>
+            <h1>Job Management</h1>
+            <div class='project-participants'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button class='project-participants__add'>Add Participant</button>
+
+            </div>
+        </div>
+        <div class='project-tasks'>
+            drafts
+            <div class='project-column'>
+                <div class='project-column-heading'>
+                    <h2 class='project-column-heading__title'>Draft</h2><button class='project-column-heading__options'><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                {% for current in draft %}
+                    <div class='task' draggable='true'>
+                        <div class='task__tags'><span class='task__tag task__tag--copyright'>{{ current.title }}</span><button class='task__options'><i class="fas fa-ellipsis-h"></i></button></div>
+                        <p >{{ current.content }}</p>
+                        <p class={{ current.status }}>{{ current.id }}</p>
+                        <div class='task__stats'>
+                            <span><time datetime="2021-11-24T20:00:00"><i class="fas fa-flag"></i>12:00</time></span>
+                            <span class='task__owner'></span>
+                        </div>
+                        <button draft-id="{{ current.id }}" current-status="{{ current.status }}"  class="change_status">Change status</button>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class='project-column'><div class='project-column-heading'>
+                    <h2 class='project-column-heading__title'>Pending</h2><button class='project-column-heading__options'><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+
+                {% for current in posted %}
+                    <div class='task' draggable='true'>
+                        <div class='task__tags'><span class='task__tag task__tag--copyright'>{{ current.title }}</span><button class='task__options'><i class="fas fa-ellipsis-h"></i></button></div>
+                        <p>{{ current.content }}</p>
+                        <div class='task__stats'>
+                            <span><time datetime="2021-11-24T20:00:00"><i class="fas fa-flag"></i>12:00</time></span>
+                            <span class='task__owner'></span>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>
+</div>
